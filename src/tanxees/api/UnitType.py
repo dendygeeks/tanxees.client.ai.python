@@ -1,5 +1,7 @@
 from tanxees.utils.Comparer import ComparerMixin
 
+from six import string_types
+
 class UnitType(ComparerMixin):
     COMPARE_ATTRS = ('id', 'sizeW', 'sizeL')
     
@@ -22,8 +24,8 @@ class UnitType(ComparerMixin):
 
     @classmethod
     def fromId(cls, id):
-        if isinstance(id, basestring):
-            for value in vars(cls).itervalues(): 
+        if isinstance(id, string_types):
+            for value in vars(cls).values(): 
                 if isinstance(value, cls) and value.id == id:
                     return value
         raise ValueError('Unknown unit type id: %s' % id)

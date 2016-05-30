@@ -31,19 +31,19 @@ class GameModel(object):
         return self.__players
 
     def findPlayerId(self, player):
-        for key, value in self.__players.iteritems():
+        for key, value in self.__players.items():
             if value == player:
                 return key
         return None
 
     def findPlayerIdByTank(self, unit):
-        for key, value in self.__players.iteritems():
+        for key, value in self.__players.items():
             if value.unit == unit:
                 return key
         return None
 
     def findMissileOwner(self, missile):
-        for player in self.__players.itervalues():
+        for player in self.__players.values():
             if player.ownsMissle(missile):
                 return player
         return None
@@ -57,5 +57,5 @@ class GameModel(object):
         game = cls(data['fieldWidth'], data['fieldHeight'], data['isOver'],
                     None, #FlagModel.handleJson(data['flag']), ## flag disabled so far
                     field, data['cellSize'])
-        game.__players = {name: PlayerModel.handleJson(value) for (name, value) in data['players'].iteritems()}
+        game.__players = {name: PlayerModel.handleJson(value) for (name, value) in data['players'].items()}
         return game

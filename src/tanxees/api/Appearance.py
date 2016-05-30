@@ -1,5 +1,8 @@
 from tanxees.utils.Comparer import ComparerMixin
 
+from six import string_types
+from six import iteritems
+
 class Appearance(ComparerMixin):
     COMPARE_ATTRS = ('id', )
     
@@ -16,8 +19,8 @@ class Appearance(ComparerMixin):
 
     @classmethod
     def fromId(cls, id):
-        if isinstance(id, basestring):
-            for name, value in vars(cls).iteritems(): 
+        if isinstance(id, string_types):
+            for name, value in iteritems(vars(cls)): 
                 if value == id and name.isupper():
                     return cls(value)
         raise ValueError('Unknown appearance id: %s' % id)

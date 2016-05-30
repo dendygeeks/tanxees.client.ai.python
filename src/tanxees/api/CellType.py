@@ -1,5 +1,8 @@
 from tanxees.utils.Comparer import ComparerMixin
 
+from six import string_types
+from six import iteritems
+
 class CellType(ComparerMixin):
     COMPARE_ATTRS = ('code', )
     
@@ -25,8 +28,8 @@ class CellType(ComparerMixin):
 
     @classmethod
     def fromCode(cls, code):
-        if isinstance(code, basestring):
-            for name, value in vars(cls).iteritems(): 
+        if isinstance(code, string_types):
+            for name, value in iteritems(vars(cls)): 
                 if value == code and name.isupper():
                     return cls(value)
         raise ValueError('Unknown cell type code: %s' % code)
