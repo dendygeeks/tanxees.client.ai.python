@@ -1,4 +1,4 @@
-from UnitModel import UnitModel
+from .UnitModel import UnitModel
 
 class MissileModel(UnitModel):
     pass

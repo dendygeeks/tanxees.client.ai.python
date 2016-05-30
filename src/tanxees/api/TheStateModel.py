@@ -1,4 +1,4 @@
-from GameModel import GameModel
+from .GameModel import GameModel
 
 class TheStateModel(object):
     def __init__(self, game, activePlayerId):

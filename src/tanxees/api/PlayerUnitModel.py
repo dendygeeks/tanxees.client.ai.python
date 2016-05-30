@@ -1,5 +1,5 @@
 from tanxees.utils.Comparer import ComparerMixin
-from UnitModel import UnitModel
+from .UnitModel import UnitModel
 
 class PlayerUnitModel(UnitModel):
     COMPARE_ATTRS = ('sizeX', 'sizeY', 'posX', 'posY', 'angle', 'moving')

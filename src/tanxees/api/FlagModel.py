@@ -1,4 +1,4 @@
-from UnitModel import UnitModel
+from .UnitModel import UnitModel
 from tanxees.utils.Comparer import ComparerMixin
 
 class FlagModel(UnitModel):

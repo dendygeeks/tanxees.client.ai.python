@@ -1,8 +1,8 @@
-from UnitType import UnitType
-from Appearance import Appearance
-from MissileModel import MissileModel
-from PlayerUnitModel import PlayerUnitModel
-from DebugDataModel import DebugDataModel
+from .UnitType import UnitType
+from .Appearance import Appearance
+from .MissileModel import MissileModel
+from .PlayerUnitModel import PlayerUnitModel
+from .DebugDataModel import DebugDataModel
 from tanxees.utils.Comparer import ComparerMixin
 
 class PlayerModel(ComparerMixin):

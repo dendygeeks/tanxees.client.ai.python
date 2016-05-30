@@ -1,4 +1,4 @@
-from CellType import CellType
+from .CellType import CellType
 from tanxees.utils.Comparer import ComparerMixin
 
 class CellModel(ComparerMixin):

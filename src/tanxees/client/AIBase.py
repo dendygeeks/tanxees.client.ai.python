@@ -1,6 +1,6 @@
 import logging
 
-from ClientStateControllerWebSocket import ClientStateControllerWebSocket
+from .ClientStateControllerWebSocket import ClientStateControllerWebSocket
 
 class AIBase(object):
     URL_START = 'ws://localhost:9876/player?playerId='

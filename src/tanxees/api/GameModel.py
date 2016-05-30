@@ -1,6 +1,6 @@
-from FlagModel import FlagModel
-from CellModel import CellModel
-from PlayerModel import PlayerModel
+from .FlagModel import FlagModel
+from .CellModel import CellModel
+from .PlayerModel import PlayerModel
 
 class GameModel(object):
     def __init__(self, fieldWidth, fieldHeight, isOver, flag, field, cellSize):
