@@ -50,7 +50,10 @@ class GameModel(object):
 
     @classmethod
     def handleJson(cls, data):
-        field = [CellModel.handleJson(cell) for cell in data['field']]
+        field = []
+        for line in zip(*[iter(data['field'])] * data['fieldWidth']):
+            field.append([CellModel.handleJson(cell) for cell in line])
+
         game = cls(data['fieldWidth'], data['fieldHeight'], data['isOver'],
                     None, #FlagModel.handleJson(data['flag']), ## flag disabled so far
                     field, data['cellSize'])
