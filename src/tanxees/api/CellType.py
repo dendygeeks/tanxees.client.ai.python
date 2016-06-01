@@ -13,6 +13,8 @@ class CellType(ComparerMixin):
     DARK_CONCRETE = "DC"
     DARK_BRICKS = "DB"
     
+    __backmap__ = None
+    
     def __init__(self, code):
         self.__code = code
 
@@ -28,8 +30,9 @@ class CellType(ComparerMixin):
 
     @classmethod
     def fromCode(cls, code):
-        if isinstance(code, string_types):
-            for name, value in iteritems(vars(cls)): 
-                if value == code and name.isupper():
-                    return cls(value)
-        raise ValueError('Unknown cell type code: %s' % code)
+        if not cls.__backmap__:
+            cls.__backmap__ = {value: name for (name, value) in iteritems(vars(cls)) if name.isupper()}
+        try:
+            return cls.__backmap__[code]
+        except KeyError:
+            raise ValueError('Unknown cell type code: %s' % code)

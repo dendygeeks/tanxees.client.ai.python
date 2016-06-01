@@ -10,6 +10,8 @@ class Appearance(ComparerMixin):
     YELLOW = 'yellow'
     GRAY = 'gray'
     
+    __backmap__ = None
+
     def __init__(self, id):
         self.__id = id
 
@@ -19,8 +21,9 @@ class Appearance(ComparerMixin):
 
     @classmethod
     def fromId(cls, id):
-        if isinstance(id, string_types):
-            for name, value in iteritems(vars(cls)): 
-                if value == id and name.isupper():
-                    return cls(value)
-        raise ValueError('Unknown appearance id: %s' % id)
+        if not cls.__backmap__:
+            cls.__backmap__ = {value: name for (name, value) in iteritems(vars(cls)) if name.isupper()}
+        try:
+            return cls.__backmap__[id]
+        except KeyError:
+            raise ValueError('Unknown appearance id: %s' % id)

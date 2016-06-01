@@ -53,9 +53,14 @@ class GameModel(object):
         field = []
         for line in zip(*[iter(data['field'])] * data['fieldWidth']):
             field.append([CellModel.handleJson(cell) for cell in line])
+        try:
+            flagData = data['flag']
+        except KeyError:
+            flag = None
+        else:
+            flag = FlagModel.handleJson(flagData) 
 
         game = cls(data['fieldWidth'], data['fieldHeight'], data['isOver'],
-                    None, #FlagModel.handleJson(data['flag']), ## flag disabled so far
-                    field, data['cellSize'])
+                    flag, field, data['cellSize'])
         game.__players = {name: PlayerModel.handleJson(value) for (name, value) in data['players'].items()}
         return game
